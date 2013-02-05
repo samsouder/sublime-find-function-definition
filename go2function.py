@@ -77,15 +77,19 @@ class GoToFunctionCommand(sublime_plugin.TextCommand):
 
     #search for normal functions and named anonymous functions
     lookup1 = "function "+wordstr
-    lookup2 = wordstr+": function"
-    lookup3 = wordstr+":function"
-    lookup4 = wordstr+" :function"
-    lookup5 = wordstr+" = function"
-    lookup6 = wordstr+"= function"
-    lookup7 = wordstr+"=function"
-    lookup8 = wordstr+" =function"
+    lookup2 = "function &"+wordstr
+    lookup3 = wordstr+": function"
+    lookup4 = wordstr+":function"
+    lookup5 = wordstr+" :function"
+    lookup6 = wordstr+" = function"
+    lookup7 = wordstr+"= function"
+    lookup8 = wordstr+"=function"
+    lookup9 = wordstr+" =function"
 
-    return (lookup1, lookup2, lookup3, lookup4, lookup5, lookup6, lookup7, lookup8)
+    #search for class definitions
+    lookup10 = "class "+wordstr
+
+    return (lookup1, lookup2, lookup3, lookup4, lookup5, lookup6, lookup7, lookup8, lookup9, lookup10)
 
   def getExcludedDirs(self, view):
     #this gets the folder_exclude_patterns from the settings file, not the project file
